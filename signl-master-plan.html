@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIGNL. — Master Plan 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0D1A2A;
+  --ink2:#1A3C5E;
+  --ink3:#2E6DA4;
+  --mist:#EEF3F8;
+  --mist2:#D5E2EE;
+  --fog:#F7F9FB;
+  --white:#FFFFFF;
+  --gold:#B8860B;
+  --red:#C0392B;
+  --green:#1A6B3A;
+  --accent:#2E6DA4;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--fog);color:var(--ink);overflow-x:hidden}
+
+/* PROGRESS */
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--ink3);z-index:999;width:0%;transition:width .1s linear}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;height:52px;
+  background:rgba(13,26,42,0.97);backdrop-filter:blur(16px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:#fff;letter-spacing:.02em;cursor:pointer}
+.nav-brand span{color:var(--ink3)}
+.nav-right{display:flex;align-items:center;gap:.2rem;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+.nav-right::-webkit-scrollbar{display:none}
+.nav-right a{color:rgba(255,255,255,.4);font-size:.68rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;padding:.3rem .55rem;border-radius:3px;white-space:nowrap;transition:color .2s,background .2s}
+.nav-right a:hover,.nav-right a.active{color:#fff;background:rgba(255,255,255,.08)}
+
+/* HERO */
+.hero{
+  min-height:100vh;background:var(--ink);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:7rem 3rem 5rem;position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(46,109,164,.18) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'SIGNL.';position:absolute;right:-1rem;bottom:-4rem;font-family:'Playfair Display',serif;font-size:20vw;font-weight:900;color:rgba(255,255,255,.025);pointer-events:none;line-height:1;user-select:none}
+.hero-label{font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:1.5rem}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:1.04;color:#fff;max-width:820px;margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--ink3)}
+.hero-sub{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.5);max-width:540px;line-height:1.8;margin-bottom:3rem}
+.hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.07);border-radius:8px;overflow:hidden;max-width:580px;margin-bottom:2rem}
+.hero-stat{background:rgba(255,255,255,.03);padding:1.1rem .9rem;text-align:center}
+.hero-stat-n{font-family:'DM Mono',monospace;font-size:1.5rem;color:#fff;display:block;margin-bottom:.15rem}
+.hero-stat-l{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.hero-quote{font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,.25);font-size:.95rem;max-width:600px;line-height:1.7}
+
+/* CHAPTER BREAK */
+.chapter{
+  background:var(--ink);padding:5rem 3rem;
+  display:flex;align-items:flex-start;gap:2rem;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.chapter-inner{max-width:1000px;margin:0 auto;width:100%;display:flex;align-items:flex-start;gap:2rem}
+.chapter-tag{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;color:rgba(255,255,255,.3);background:rgba(255,255,255,.06);padding:.3rem .7rem;border-radius:3px;white-space:nowrap;margin-top:.5rem;flex-shrink:0}
+.chapter-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:900;line-height:1.05;color:#fff}
+.chapter-title em{font-style:italic;color:var(--ink3)}
+.chapter-sub{color:rgba(255,255,255,.4);font-size:1rem;line-height:1.7;margin-top:.75rem;max-width:600px}
+
+/* CONTENT WRAPPER */
+.wrap{max-width:1000px;margin:0 auto;padding:4rem 3rem}
+
+/* TYPOGRAPHY */
+.h2{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--ink2);margin:3rem 0 .75rem;line-height:1.2}
+.h3{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:2rem 0 .6rem}
+.p{font-size:.97rem;line-height:1.85;color:var(--ink);opacity:.82;margin-bottom:.9rem}
+.p strong{opacity:1;font-weight:500;color:var(--ink)}
+.mono{font-family:'DM Mono',monospace}
+
+/* DIVIDER */
+.rule{border:none;border-top:1px solid var(--mist2);margin:2.5rem 0}
+
+/* CALLOUT */
+.box{border-radius:6px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+.box-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
+.box p{font-size:.9rem;line-height:1.75;opacity:.85}
+.box.info{background:var(--mist);border-left:3px solid var(--ink2)}
+.box.info .box-label{color:var(--ink2)}
+.box.warn{background:#FDF2F2;border-left:3px solid var(--red)}
+.box.warn .box-label{color:var(--red)}
+.box.go{background:#F1F8F3;border-left:3px solid var(--green)}
+.box.go .box-label{color:var(--green)}
+.box.gold{background:#FBF8EE;border-left:3px solid var(--gold)}
+.box.gold .box-label{color:var(--gold)}
+.box.dark{background:var(--ink);border-left:3px solid var(--ink3);padding:2rem}
+.box.dark .box-label{color:var(--ink3)}
+.box.dark p{color:rgba(255,255,255,.75)}
+
+/* POSITIONING STATEMENT */
+.pos-box{background:var(--ink);border-radius:10px;padding:2.5rem 3rem;margin:1.5rem 0;text-align:center}
+.pos-box-tag{font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:1rem}
+.pos-box-text{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.55rem);font-style:italic;color:#fff;line-height:1.65}
+
+/* TABLE */
+.t{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.88rem}
+.t th{background:var(--ink);color:#fff;font-size:.65rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:.7rem 1rem;text-align:left}
+.t td{padding:.75rem 1rem;border-bottom:1px solid var(--mist2);line-height:1.65;vertical-align:top}
+.t tr:nth-child(even) td{background:var(--mist)}
+.t tr:last-child td{border-bottom:none}
+.t td strong{font-weight:500}
+
+/* STEPS */
+.steps{margin:1.5rem 0}
+.step{display:grid;grid-template-columns:52px 1fr;border:1px solid var(--mist2);border-bottom:none}
+.step:first-child{border-radius:8px 8px 0 0}
+.step:last-child{border-radius:0 0 8px 8px;border-bottom:1px solid var(--mist2)}
+.step-n{background:var(--ink2);color:#fff;font-family:'DM Mono',monospace;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body{padding:1.1rem 1.4rem;background:#fff}
+.step-name{font-size:.65rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--ink3);margin-bottom:.3rem}
+.step-desc{font-size:.9rem;line-height:1.65;color:var(--ink);opacity:.82}
+
+/* OFFER CARDS */
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.5rem 0}
+.offer{border:1px solid var(--mist2);border-radius:10px;overflow:hidden;background:#fff}
+.offer-head{background:var(--ink);padding:1.4rem 1.5rem}
+.offer-tag{font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:.35rem}
+.offer-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+.offer-price{font-family:'DM Mono',monospace;font-size:1.5rem;color:#fff;font-weight:500}
+.offer-price span{font-size:.78rem;color:rgba(255,255,255,.4)}
+.offer-bd{padding:1.25rem 1.5rem}
+.offer-sl{font-size:.6rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--ink3);margin:1rem 0 .35rem}
+.offer-sl:first-child{margin-top:0}
+.offer-bd p,.offer-bd li{font-size:.87rem;line-height:1.65;color:var(--ink);opacity:.8}
+.offer-bd ul{padding-left:1.2rem}
+.offer-bd li{margin-bottom:.2rem}
+
+/* DM BOX */
+.dm{background:var(--mist);border:1px solid var(--mist2);border-radius:8px;padding:1.5rem;margin:1.25rem 0}
+.dm-head{font-size:.62rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--ink2);margin-bottom:.75rem}
+.dm-text{font-family:'DM Mono',monospace;font-size:.8rem;line-height:1.9;color:var(--ink);white-space:pre-wrap}
+
+/* OBJECTION */
+.obj{border:1px solid var(--mist2);border-radius:8px;overflow:hidden;margin:.75rem 0}
+.obj-q{background:var(--mist);padding:.9rem 1.2rem;font-size:.9rem;font-weight:500;color:var(--ink);border-bottom:1px solid var(--mist2)}
+.obj-a{background:#fff;padding:.9rem 1.2rem;font-size:.87rem;line-height:1.7;color:var(--ink);opacity:.82}
+
+/* TIMELINE */
+.timeline{padding-left:1.75rem;margin:1.5rem 0;border-left:2px solid var(--mist2)}
+.tl-item{margin-bottom:1.75rem;position:relative}
+.tl-item::before{content:'';position:absolute;left:-2.05rem;top:.35rem;width:9px;height:9px;border-radius:50%;background:var(--ink2);border:2px solid var(--fog)}
+.tl-day{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--ink3);letter-spacing:.05em;margin-bottom:.25rem}
+.tl-title{font-size:.97rem;font-weight:500;color:var(--ink);margin-bottom:.35rem}
+.tl-body{font-size:.87rem;line-height:1.7;color:var(--ink);opacity:.72}
+
+/* FINANCIAL */
+.fin-t{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.85rem}
+.fin-t th{background:var(--ink);color:#fff;font-size:.63rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:.65rem .9rem;text-align:left}
+.fin-t td{padding:.65rem .9rem;border-bottom:1px solid var(--mist2);vertical-align:top;font-family:'DM Mono',monospace;font-size:.82rem}
+.fin-t tr:nth-child(even) td{background:var(--mist)}
+.fin-t .hl td{background:#E8F0F9;font-weight:500}
+.fin-t .tot td{background:var(--ink2);color:#fff;font-weight:500}
+.fin-t .crit td{background:#FDF2F2;color:var(--red)}
+
+/* RISK */
+.risk{border:1px solid var(--mist2);border-radius:8px;overflow:hidden;margin:1rem 0}
+.risk-head{background:var(--red);padding:1rem 1.25rem;display:flex;align-items:center;gap:.75rem}
+.risk-n{font-family:'DM Mono',monospace;font-size:.75rem;color:rgba(255,255,255,.6)}
+.risk-name{font-size:.97rem;font-weight:500;color:#fff}
+.risk-bd{background:#fff;padding:1.25rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.risk-col-l{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.35rem}
+.risk-col p{font-size:.87rem;line-height:1.65;opacity:.8}
+
+/* PILLARS */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+.pillar{background:#fff;border:1px solid var(--mist2);border-radius:8px;padding:1.25rem}
+.pillar-n{font-family:'DM Mono',monospace;font-size:2rem;color:var(--mist2);margin-bottom:.4rem}
+.pillar-name{font-size:.93rem;font-weight:500;color:var(--ink);margin-bottom:.35rem}
+.pillar-desc{font-size:.82rem;line-height:1.6;color:var(--ink);opacity:.68}
+.pillar-ex{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--mist2)}
+.pillar-ex-l{font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.25rem}
+.pillar-ex p{font-size:.78rem;line-height:1.5;font-style:italic;opacity:.65}
+
+/* NONNEG */
+.nonneg{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--mist2);border-radius:8px;overflow:hidden;margin:1.5rem 0}
+.nn{background:#fff;padding:1.25rem .9rem;text-align:center}
+.nn-n{font-family:'DM Mono',monospace;font-size:1.75rem;color:var(--ink2);display:block;margin-bottom:.35rem}
+.nn-t{font-size:.8rem;line-height:1.5;color:var(--ink);opacity:.72}
+
+/* SITE PLANNING */
+.site-plan{background:#fff;border:1px solid var(--mist2);border-radius:10px;overflow:hidden;margin:1.5rem 0}
+.site-plan-head{background:var(--ink2);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.site-plan-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff}
+.site-plan-url{font-family:'DM Mono',monospace;font-size:.75rem;color:rgba(255,255,255,.5)}
+.site-plan-body{padding:1.5rem}
+.wire{background:var(--mist);border:1px solid var(--mist2);border-radius:6px;padding:1.25rem;margin:1rem 0;font-family:'DM Mono',monospace;font-size:.8rem;line-height:1.9;color:var(--ink);opacity:.75;white-space:pre-wrap}
+
+/* FOOTER */
+footer{background:var(--ink);padding:4rem 3rem;text-align:center;border-top:1px solid rgba(255,255,255,.05)}
+footer p{color:rgba(255,255,255,.25);font-size:.82rem;line-height:2.2}
+footer strong{color:rgba(255,255,255,.6)}
+
+/* SCROLL ANIM */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{padding:5rem 1.25rem 3rem}
+  .wrap{padding:3rem 1.25rem}
+  .chapter{padding:3.5rem 1.25rem}
+  .chapter-inner{flex-direction:column;gap:.75rem}
+  nav{padding:0 1rem}
+  .offer-grid,.pillars{grid-template-columns:1fr}
+  .nonneg{grid-template-columns:1fr 1fr}
+  .risk-bd{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav>
+  <div class="nav-brand" onclick="scrollTo(0,0)">SIGNL<span>.</span></div>
+  <div class="nav-right">
+    <a href="#s1">Positioning</a>
+    <a href="#s2">Offers</a>
+    <a href="#s3">Sales</a>
+    <a href="#s4">Delivery</a>
+    <a href="#s5">Content</a>
+    <a href="#s6">Financial</a>
+    <a href="#s7">90 Days</a>
+    <a href="#s8">Risks</a>
+    <a href="#s9">Agency Site</a>
+    <a href="#s10">Ahmad Site</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top">
+  <div class="hero-label">Ahmad Farooq · Lahore, Pakistan · Day 1 · March 10, 2026</div>
+  <h1 class="hero-title">The SIGNL.<br><em>Master Plan.</em></h1>
+  <p class="hero-sub">One case study. One mechanism. Four offers. Ten sections. Everything you need to build the business — nothing softened.</p>
+  <div class="hero-grid">
+    <div class="hero-stat"><span class="hero-stat-n">$36</span><span class="hero-stat-l">Liquid</span></div>
+    <div class="hero-stat"><span class="hero-stat-n">130</span><span class="hero-stat-l">Followers</span></div>
+    <div class="hero-stat"><span class="hero-stat-n">1</span><span class="hero-stat-l">Case Study</span></div>
+    <div class="hero-stat"><span class="hero-stat-n">4mo</span><span class="hero-stat-l">Runway</span></div>
+  </div>
+  <p class="hero-quote">"The plan is not the problem. The only question is whether you will do it today, or plan it again tomorrow."</p>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S1 · POSITIONING                           -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter reveal" id="s1">
+  <div class="chapter-inner">
+    <span class="chapter-tag">SECTION 01</span>
+    <div>
+      <h1 class="chapter-title">Positioning<br><em>&amp; Market</em></h1>
+      <p class="chapter-sub">Who you are for, what you stand against, and the mechanism that makes your results repeatable.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <p class="h2">1a. The Positioning Statement</p>
+  <p class="p">Your current positioning is a category description, not a position. "LinkedIn growth strategist helping coaches and founders" tells a prospect nothing they couldn't read on 50 other profiles. No enemy, no mechanism, no specificity. Here is the corrected version:</p>
+  <div class="pos-box">
+    <div class="pos-box-tag">The SIGNL Positioning Statement</div>
+    <div class="pos-box-text">"I help SaaS and agency founders escape the follower treadmill and turn LinkedIn into a predictable inbound pipeline — using a done-for-you content and positioning system built around one thing: pipeline, not vanity metrics."</div>
+  </div>
+  <div class="box gold"><div class="box-label">Why this works</div><p><strong>Enemy named:</strong> "follower treadmill" and "vanity metrics" — what your ICP has already paid for and resented. <strong>Outcome named:</strong> "predictable inbound pipeline" — not followers, not impressions. Pipeline. <strong>Mechanism named:</strong> "done-for-you content and positioning system" — separates you from coaches and course sellers.</p></div>
+  <div class="box warn"><div class="box-label">Why SaaS + agency founders, not coaches</div><p>Nick FarrenKopf is a SaaS founder. He is your only verifiable proof point. Targeting SaaS and agency founders means you can point to him and say "this person looks exactly like you." Build credibility in the niche your case study lives in first. Expand later.</p></div>
+
+  <hr class="rule">
+  <p class="h2">1b. Ideal Client Profile — Surgical Definition</p>
+  <div class="h3">Hard filter — who qualifies</div>
+  <table class="t">
+    <thead><tr><th>Field</th><th>Spec</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Industry</strong></td><td>SaaS founders (B2B, early–mid stage) or agency founders (marketing, dev, design, ops)</td></tr>
+      <tr><td><strong>Follower range</strong></td><td>500 – 5,000 LinkedIn followers</td></tr>
+      <tr><td><strong>Geography</strong></td><td>US, UK, Canada, Australia — English native or fluent, paying in USD</td></tr>
+      <tr><td><strong>Revenue</strong></td><td>$5K–$50K/month MRR — has paying customers, not pre-revenue</td></tr>
+      <tr><td><strong>Team size</strong></td><td>1–10 people — founder IS the brand</td></tr>
+    </tbody>
+  </table>
+  <div class="h3">Behavioural signals — what they look like on LinkedIn right now</div>
+  <p class="p">Posts 0–2 times per week, or posted in bursts 3 months ago then went silent. Most recent posts are product announcements getting 3–8 likes from their own team. Banner is generic or blank. Headline says "CEO at [Company]" with zero outcome language. Featured section has a website link but no lead magnet or conversion mechanism. About section reads like a CV — what they built, not what they solve for whom.</p>
+  <div class="h3">Exact complaint language — what they say</div>
+  <p class="p">"I post but nothing happens. No DMs, no leads, nothing." · "LinkedIn feels like screaming into the void." · "I know I should be consistent but I never know what to write." · "We tried hiring a content person but they didn't get our voice." · "Our best clients came from referrals. I have no idea how to replicate that without working my network manually forever."</p>
+  <div class="h3">What they've tried (and why it failed)</div>
+  <p class="p">Hired a VA or ghostwriter who produced generic posts that sounded nothing like them — credibility damaged. Bought a $97–$497 LinkedIn course — understood the theory, never executed consistently. Tried posting every day for 2 weeks, burned out, stopped. Paid an agency $2K/month that included LinkedIn — got zero pipeline from it. The pattern: they've invested in content production without investing in positioning first. Content without positioning is noise.</p>
+  <div class="h3">Why LinkedIn specifically, not Instagram or X</div>
+  <p class="p">Their buyers (B2B decision makers, other founders, procurement) live on LinkedIn. LinkedIn content has the longest shelf life of any social platform — a post from 6 months ago still gets found. DMs on LinkedIn convert higher than cold email in B2B contexts. Their competition is mostly invisible on LinkedIn — the bar to stand out is genuinely low. They already have a profile. The infrastructure exists. It just isn't working.</p>
+
+  <hr class="rule">
+  <p class="h2">1c. The Named Mechanism — The SIGNL Method</p>
+  <p class="p">A proprietary-sounding process you can describe in one DM, one sales call, and one case study post. Own this language. Use it consistently.</p>
+  <div class="steps">
+    <div class="step"><div class="step-n">01</div><div class="step-body"><div class="step-name">Signal Audit</div><div class="step-desc">Diagnose exactly what's broken — profile positioning, content gaps, missed conversion points. Delivered as a Loom walkthrough with a prioritised action plan. This is your $350 entry offer.</div></div></div>
+    <div class="step"><div class="step-n">02</div><div class="step-body"><div class="step-name">Story Architecture</div><div class="step-desc">Define the founder's core narrative: what they stand for, the enemy they fight, the outcome they produce. This becomes the backbone of every post and every piece of copy on their profile.</div></div></div>
+    <div class="step"><div class="step-n">03</div><div class="step-body"><div class="step-name">Infrastructure Build</div><div class="step-desc">Optimise every profile element for conversion: headline, banner brief, about section rewrite, featured section, CTA path. The profile becomes a sales page, not a CV.</div></div></div>
+    <div class="step"><div class="step-n">04</div><div class="step-body"><div class="step-name">Content Engine</div><div class="step-desc">Build a repeatable content system: pillar topics, post frameworks, hook library, 30-day calendar — all in the founder's voice. They never start from a blank page again.</div></div></div>
+    <div class="step"><div class="step-n">05</div><div class="step-body"><div class="step-name">Pipeline Activation</div><div class="step-desc">The engagement and outreach layer. Strategic commenting on 10 target posts/day, DM frameworks, follow-up sequences. The step that turns impressions into conversations.</div></div></div>
+  </div>
+  <div class="box go"><div class="box-label">How to reference this in a DM</div><p>Don't list all 5 steps. Say: "I use a system called the SIGNL Method — starts with diagnosing what's broken, then rebuilds the content infrastructure around one outcome: pipeline. Nick FarrenKopf went from 0 to 3,490 followers in 90 days with it. Want me to run the diagnostic on yours?"</p></div>
+
+  <hr class="rule">
+  <p class="h2">1d. Competitive Landscape</p>
+  <table class="t">
+    <thead><tr><th>Competitor type</th><th>Their pitch</th><th>Where you win</th><th>Where you're weak</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Big LinkedIn agencies</strong><br><span style="opacity:.55;font-size:.8rem">$3K–$8K/mo</span></td><td>Full-service, team-based, brand-safe, slow to start</td><td>Speed, founder-level access, price point, authentic voice capture</td><td>No team, limited track record</td></tr>
+      <tr><td><strong>$97–$497 course sellers</strong></td><td>"Learn to do it yourself"</td><td>You do it for them. Done-for-you beats DIY for every busy founder</td><td>Larger audiences, more social proof</td></tr>
+      <tr><td><strong>Freelance ghostwriters</strong><br><span style="opacity:.55;font-size:.8rem">$500–$2K/mo</span></td><td>Content production only, no strategy</td><td>You deliver strategy + content + profile + system. They deliver words.</td><td>More samples, longer track record</td></tr>
+      <tr><td><strong>LinkedIn coaches</strong><br><span style="opacity:.55;font-size:.8rem">$500–$2K/mo</span></td><td>"I'll teach you how to grow"</td><td>You do the work. Coaching requires the client to execute. You remove that dependency.</td><td>Coaches often have large audiences and authority</td></tr>
+    </tbody>
+  </table>
+  <div class="box info"><div class="box-label">Your actual edge right now</div><p>You are a 20-year-old in Pakistan who charges 40–60% less than a UK/US equivalent, writes at native-English level, has one verifiable case study, and hit 100K+ impressions with hot-take content. The price arbitrage is a feature — but you never lead with it. Lead with results. The price is just the close.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S2 · OFFERS                                -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter reveal" id="s2">
+  <div class="chapter-inner">
+    <span class="chapter-tag">SECTION 02</span>
+    <div>
+      <h1 class="chapter-title">Offer Stack<br><em>Refinement</em></h1>
+      <p class="chapter-sub">Four offers. One entry point. A clear escalation path. Each with scope, delivery, and objection handling built in.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <div class="box warn"><div class="box-label">Rule for the first 30 days</div><p>Do not pitch all four offers. Your only offer for the first 30 days is the Signal Audit at $350. The audit is the door. Everything else is what happens after they walk through it. Mentioning the full stack too early creates confusion and delays the close.</p></div>
+
+  <div class="offer-grid">
+    <div class="offer">
+      <div class="offer-head">
+        <div class="offer-tag">Offer 01 · Entry Point · Lead Now</div>
+        <div class="offer-name">The Signal Audit</div>
+        <div class="offer-price">$350 <span>/ $500 premium (2K+ followers)</span></div>
+      </div>
+      <div class="offer-bd">
+        <div class="offer-sl">Deliverables</div>
+        <ul>
+          <li>LinkedIn profile review across 7 dimensions</li>
+          <li>Content strategy gap analysis (last 90 days)</li>
+          <li>Competitor positioning scan (3 names in their space)</li>
+          <li>Prioritised action plan: fix-first, fix-second, fix-third</li>
+          <li>Personal Loom walkthrough (20–25 min)</li>
+          <li>Written PDF summary of findings</li>
+          <li>One follow-up Q&amp;A message included</li>
+        </ul>
+        <div class="offer-sl">Not included</div>
+        <p>Writing any content, ongoing support, or implementation. That is the System Build.</p>
+        <div class="offer-sl">Outcome promise</div>
+        <p>A clear ranked list of exactly what is broken and what to fix first — with the reason why, not just the what.</p>
+        <div class="offer-sl">Delivery timeline</div>
+        <p>5 business days from payment. You need: their LinkedIn URL, a 10-min onboarding form, and access to their last 90 days of posts.</p>
+        <div class="offer-sl">Upsell trigger</div>
+        <p>End the Loom: "If you want me to implement everything I just described, that's the SIGNL Build — covers Steps 2–4 of the method."</p>
+        <div class="offer-sl">Price justification</div>
+        <p>Frame it as: "If this audit leads to one new client at your average deal size, what's the ROI?" $350 for one-client clarity is 10–50x depending on their deal size. You're not charging for your time. You're charging for the diagnosis.</p>
+      </div>
+    </div>
+
+    <div class="offer">
+      <div class="offer-head">
+        <div class="offer-tag">Offer 02 · One-Time Project · Month 2+</div>
+        <div class="offer-name">The SIGNL Build</div>
+        <div class="offer-price">$1,200 <span>– $1,800</span></div>
+      </div>
+      <div class="offer-bd">
+        <div class="offer-sl">Deliverables</div>
+        <ul>
+          <li>Full LinkedIn profile overhaul (all sections rewritten)</li>
+          <li>Custom headline, banner brief, about section</li>
+          <li>3–4 defined content pillars specific to their niche</li>
+          <li>30-day content calendar (12 post outlines, hooks written)</li>
+          <li>Hook library: 20 proven hooks in their voice</li>
+          <li>DM outreach framework and templates</li>
+          <li>Handoff Loom walkthrough of everything built</li>
+        </ul>
+        <div class="offer-sl">Milestones</div>
+        <p><strong>Week 1:</strong> Story architecture, profile rewrite, voice capture. <strong>Week 2:</strong> Content pillars, calendar, hook library, DM framework. Handoff call end of Week 2.</p>
+        <div class="offer-sl">Upsell trigger</div>
+        <p>At handoff: "The system is built. The question now is who runs it. I can run it for you — that is the retainer."</p>
+        <div class="offer-sl">Gap warning</div>
+        <p>Do not sell this until you have delivered at least one Signal Audit. You need the audit as a demand generation mechanism — not just as revenue, but as proof of your diagnostic process.</p>
+      </div>
+    </div>
+
+    <div class="offer">
+      <div class="offer-head">
+        <div class="offer-tag">Offer 03 · Monthly Retainer · Month 2+</div>
+        <div class="offer-name">The SIGNL Partnership</div>
+        <div class="offer-price">$700 <span>/month · 3-month minimum</span></div>
+      </div>
+      <div class="offer-bd">
+        <div class="offer-sl">Deliverables</div>
+        <ul>
+          <li>2 × 45-min strategy + review calls per month</li>
+          <li>Weekly content review — feedback within 24hrs</li>
+          <li>DM coaching + response templates</li>
+          <li>Monthly performance report</li>
+          <li>Async Loom feedback on posts anytime</li>
+        </ul>
+        <div class="offer-sl">Commitment structure</div>
+        <p>3-month minimum. Month 1 = onboarding + baseline. Month 2 = momentum. Month 3 = measurable results. No 3-month commitment = no retainer. This protects you both.</p>
+        <div class="offer-sl">Outcome promise</div>
+        <p>By end of Month 3: posting 3×/week consistently, measurable follower growth, at least 2 inbound DMs from LinkedIn.</p>
+        <div class="offer-sl">Who this is for</div>
+        <p>Clients who want to develop the skill themselves with expert coaching. They write, you guide. If they want you to do it: Offer 4.</p>
+      </div>
+    </div>
+
+    <div class="offer">
+      <div class="offer-head">
+        <div class="offer-tag">Offer 04 · Full Management · Month 3+</div>
+        <div class="offer-name">The SIGNL Engine</div>
+        <div class="offer-price">$2,000 <span>– $3,000/month</span></div>
+      </div>
+      <div class="offer-bd">
+        <div class="offer-sl">Deliverables</div>
+        <ul>
+          <li>4 posts/week written, approved, published by you</li>
+          <li>Daily engagement (10 strategic comments/day)</li>
+          <li>Monthly 60-min strategy call</li>
+          <li>DM management framework + first-draft responses</li>
+          <li>Weekly metrics report</li>
+        </ul>
+        <div class="offer-sl">Voice capture process</div>
+        <p>Week 1: 60-min recorded voice interview + review of last 90 days of posts + 3 sample posts approved before going live. No post goes out without approval in Month 1.</p>
+        <div class="offer-sl">Capacity hard cap</div>
+        <p><strong>Maximum 3 DFY clients simultaneously.</strong> You physically cannot write 16 quality posts/week. Cap it at 3 and price accordingly. State this limit in pitches — it creates real scarcity.</p>
+        <div class="offer-sl">Critical warning</div>
+        <p>Do not sell this before Month 3. You have one case study. DFY at $2K requires multiple proof points and a delivery system you haven't stress-tested. This is Month 3+ territory.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule">
+  <p class="h2">Universal Objection Handling</p>
+  <div class="obj"><div class="obj-q">❝ You only have 130 followers. Why should I trust you? ❞</div><div class="obj-a">"My job is to grow your LinkedIn, not mine. Here's what I generated for Nick FarrenKopf — 0 to 3,490 followers, 400K impressions in 90 days. His profile is live right now, you can check it. My follower count is a lagging indicator. His results aren't."</div></div>
+  <div class="obj"><div class="obj-q">❝ $350 for an audit seems expensive. ❞</div><div class="obj-a">"If this audit leads to one new client at your average deal size, what's the ROI? I'm not charging for my time — I'm charging for the clarity. For most founders I work with, one client pays for this audit 10 to 50 times over."</div></div>
+  <div class="obj"><div class="obj-q">❝ I tried LinkedIn before and it didn't work. ❞</div><div class="obj-a">"Tell me exactly what you tried — I want to understand specifically what happened. Nine times out of ten it's one of three things: wrong positioning, inconsistent execution, or no conversion mechanism. The audit exists specifically to diagnose which one killed it for you."</div></div>
+  <div class="obj"><div class="obj-q">❝ Can you do it cheaper? ❞</div><div class="obj-a">"I don't discount the audit because the price is already set to reflect the value of the diagnosis, not my hourly rate. What I can do is make sure you're clear on exactly what you get for the $350. Want me to walk you through that?"</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S3 · SALES SYSTEM                          -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter reveal" id="s3">
+  <div class="chapter-inner">
+    <span class="chapter-tag">SECTION 03</span>
+    <div>
+      <h1 class="chapter-title">Sales<br><em>System</em></h1>
+      <p class="chapter-sub">Cold DMs, cold email, warm inbound, the sales call framework, follow-up sequences, and closing.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <p class="h2">3a. Outreach Strategy</p>
+  <p class="p">Two tracks run simultaneously. <strong>Short-term:</strong> cold outreach via LinkedIn DMs + cold email to get your first client fast. <strong>Long-term:</strong> warm inbound via content + freebie + landing page. The cold system pays you now. The warm system pays you in 60–90 days and compounds forever.</p>
+
+  <div class="h3">The Cold DM Framework — 4 parts, never deviate</div>
+  <table class="t">
+    <thead><tr><th>Part</th><th>What it does</th><th>Length rule</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Specific observation</strong></td><td>Proves you looked at their profile. Not generic. One sentence about their actual profile or recent content.</td><td>1 sentence</td></tr>
+      <tr><td><strong>2. Cost of the problem</strong></td><td>Name what their current LinkedIn is costing them in pipeline terms, not vanity terms.</td><td>1–2 sentences</td></tr>
+      <tr><td><strong>3. The offer</strong></td><td>One clear sentence. What you do, how long, how much. No fluff, no preamble.</td><td>1 sentence</td></tr>
+      <tr><td><strong>4. Soft CTA</strong></td><td>A yes/no question. Not "let me know if interested." A specific, low-stakes ask.</td><td>1 sentence</td></tr>
+    </tbody>
+  </table>
+
+  <div class="h3">Example DM 1 — SaaS founder, inactive poster</div>
+  <div class="dm"><div class="dm-head">Target: SaaS founder · 800 followers · last posted 6 weeks ago</div><div class="dm-text">Hey [Name] — noticed your last LinkedIn post was about 6 weeks ago, and your headline still reads "Founder at [Company]" with no mention of what problem you solve.
+
+For a SaaS founder with a real product, that's probably costing you 3–5 inbound conversations a month you're not having.
+
+I run a LinkedIn diagnostic for founders — full audit of what's broken, delivered as a Loom in 5 days, $350.
+
+Want me to take a look at yours?</div></div>
+
+  <div class="h3">Example DM 2 — Agency founder, low engagement despite posting</div>
+  <div class="dm"><div class="dm-head">Target: Agency founder · 2,100 followers · posts but gets 5–15 likes</div><div class="dm-text">Hey [Name] — been following your content. You're posting consistently but the engagement doesn't match the quality of what you're sharing — I'd guess your positioning and hooks are doing most of the damage.
+
+That gap between content quality and results is usually a $20–30K/year problem in missed inbound for an agency your size.
+
+I do a full LinkedIn diagnostic — profile, content strategy, conversion gaps — delivered as a Loom in 5 days, $350.
+
+Worth a look?</div></div>
+
+  <div class="h3">Example cold email — non-LinkedIn outreach</div>
+  <div class="dm"><div class="dm-head">Cold email to SaaS founder found via ProductHunt / Apollo.io / company website</div><div class="dm-text">Subject: your LinkedIn (quick observation)
+
+Hey [Name],
+
+Looked at your LinkedIn after seeing [Company] on [where you found them].
+
+Your About section reads like a press release — what you built, what it does, funding stage. No mention of who you help or what changes for them. That's the most common reason SaaS founders get zero inbound from LinkedIn despite having a product people genuinely want.
+
+I do a LinkedIn Revenue Diagnostic — full audit, Loom walkthrough, 5 days, $350. Took a founder from 0 to 3,490 followers in 90 days using the same framework.
+
+Worth 5 minutes to look at yours?
+
+Ahmad
+signl.so</div></div>
+
+  <div class="h3">Warm Inbound System — Freebie + Landing Page</div>
+  <p class="p">This runs in parallel but takes 30–60 days to pay off. Build it in Week 1 alongside cold outreach. It compounds forever; cold outreach does not.</p>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><div class="step-body"><div class="step-name">The Freebie</div><div class="step-desc">Create one highly specific PDF: "The 7-Point LinkedIn Profile Audit Founders Use to Generate Inbound Leads." 1–2 pages. Actionable. Based on your exact audit framework. This is your lead magnet and it demonstrates expertise before a prospect pays you anything.</div></div></div>
+    <div class="step"><div class="step-n">2</div><div class="step-body"><div class="step-name">The Landing Page</div><div class="step-desc">One page on Carrd.co (free) or your domain. Headline: "Is your LinkedIn actually generating leads?" One CTA: download the free 7-point audit checklist. Collect email via Mailchimp (free). No sales pitch on this page — just the freebie.</div></div></div>
+    <div class="step"><div class="step-n">3</div><div class="step-body"><div class="step-name">The Content CTA</div><div class="step-desc">Every 3rd LinkedIn post ends with: "I made a free 7-point LinkedIn audit checklist. Comment AUDIT and I'll DM you the link." This drives traffic to the landing page and gives you a reason to DM every commenter — warm, already interested leads.</div></div></div>
+    <div class="step"><div class="step-n">4</div><div class="step-body"><div class="step-name">The Email Sequence</div><div class="step-desc">After download: Email 1 (Day 0) — deliver PDF. Email 2 (Day 3) — one specific insight, most common thing founders get wrong. Email 3 (Day 7) — Nick's case study in full. Email 4 (Day 10) — soft pitch for the Signal Audit at $350 with a link to book a call.</div></div></div>
+  </div>
+
+  <hr class="rule">
+  <p class="h2">3b. Sales Call Framework</p>
+  <table class="t">
+    <thead><tr><th>Stage</th><th>Time</th><th>Exact approach</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Ground them</strong></td><td>2 min</td><td>"Before I tell you anything about what I do — tell me about your LinkedIn right now. What's working, what isn't, what you've tried." Then shut up. Listen for the exact pain language they use. That language goes back at them in your pitch verbatim.</td></tr>
+      <tr><td><strong>2. Diagnose</strong></td><td>8 min</td><td>Ask: "What does a successful LinkedIn look like for you in 6 months?" "Have you ever gotten a client from LinkedIn?" "What happened the last time you posted consistently?" You're building the case for why their current approach won't get them there.</td></tr>
+      <tr><td><strong>3. Bridge</strong></td><td>3 min</td><td>"Here's what I'm hearing: [repeat their exact words back]. That tells me [specific diagnosis]. The reason LinkedIn isn't working for you isn't effort — it's [the missing piece]. That's exactly what I fix."</td></tr>
+      <tr><td><strong>4. Present</strong></td><td>3 min</td><td>Present ONE offer only: the Signal Audit. "Here's what I'd do: [60-second description]. Investment is $350. At the end of 5 days you'll have a complete picture of exactly what's broken and what to fix first."</td></tr>
+      <tr><td><strong>5. Close</strong></td><td>2 min</td><td>"Does this make sense for where you are right now?" Then silence. The first person who speaks after the close question loses. Wait for them, however long it takes.</td></tr>
+      <tr><td><strong>6. Handle + confirm</strong></td><td>3 min</td><td>Handle one objection. Then: "If this feels right, I can send the invoice tonight and we start Monday. Sound good?"</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="rule">
+  <p class="h2">3c. Follow-Up Sequences</p>
+  <div class="h3">After initial DM — no reply after 4 days</div>
+  <div class="dm"><div class="dm-head">Follow-up #1 — send once only, never twice</div><div class="dm-text">Hey [Name] — just following up on my message. Not trying to be persistent for its own sake, but I had another look at your profile and noticed you don't have a lead capture in your featured section — that's one of the highest-leverage fixes I see. Anyway, offer stands if timing's ever right.</div></div>
+
+  <div class="h3">After a call that went quiet — 3 days later, no response</div>
+  <div class="dm"><div class="dm-head">Post-call follow-up</div><div class="dm-text">Hey [Name] — following up after our call. You mentioned [specific thing they said]. That stuck with me — it's exactly the pattern I see with founders who have a strong product but can't get LinkedIn to convert.
+
+The audit offer still stands at $350. No pressure — but if you'd like to move forward, just reply here and I'll send the invoice tonight.</div></div>
+
+  <hr class="rule">
+  <p class="h2">3d. Objection Handling On Calls</p>
+  <div class="obj"><div class="obj-q">❝ That's more than I expected. ❞</div><div class="obj-a">"What were you expecting? [Let them answer.] Here's my thinking: if the audit shows you one positioning change that leads to one new client, what's that client worth to you? [They answer.] So the question isn't whether $350 is a lot — it's whether the clarity is worth it at $350 versus staying unclear."</div></div>
+  <div class="obj"><div class="obj-q">❝ I need to think about it. ❞</div><div class="obj-a">"Of course — what specifically do you need to think through? [Let them answer.] I ask because 'think about it' usually means something specific is unresolved — and if I can answer it now that saves you time. What's the main thing?" — This almost always surfaces the real objection.</div></div>
+  <div class="obj"><div class="obj-q">❝ I tried something like this before and it didn't work. ❞</div><div class="obj-a">"Tell me what you tried. What was the promise? What actually happened? [Let them describe it.] What you're describing sounds like [content production without positioning / coaching without execution / generic strategy without specificity]. What I do differently is [specific difference]. That's exactly why Nick's results looked the way they did."</div></div>
+  <div class="obj"><div class="obj-q">❝ Can you do it cheaper? ❞</div><div class="obj-a">"I don't discount the audit. The price reflects the value of the diagnosis, not my hourly rate. What I can do is make sure you're completely clear on what you get. Want me to walk through exactly what's included?"</div></div>
+
+  <div class="box info"><div class="box-label">On proposals</div><p>Do not send a written proposal before the close. Close on the call. A proposal gives them something to read, think about, and go cold on. If they ask for a proposal, say: "Everything I would put in a proposal, I just described to you. The next step is the invoice — want me to send that tonight?" The only thing you send in writing is the invoice and a one-paragraph confirmation of scope via email.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S4 · DELIVERY SYSTEMS                      -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter reveal" id="s4">
+  <div class="chapter-inner">
+    <span class="chapter-tag">SECTION 04</span>
+    <div>
+      <h1 class="chapter-title">Delivery<br><em>Systems</em></h1>
+      <p class="chapter-sub">How each offer actually gets done. Day-by-day. What you do, what the client does, what tools, what outputs.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <p class="h2">4a. Signal Audit — Full Delivery Process</p>
+  <div class="h3">The 7 dimensions you audit</div>
+  <table class="t">
+    <thead><tr><th>#</th><th>Dimension</th><th>What you're assessing</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Headline</strong></td><td>Does it communicate who they help + what outcome? Or does it just say their job title?</td></tr>
+      <tr><td>2</td><td><strong>Banner</strong></td><td>Does it visually reinforce positioning? Does it have a CTA or social proof element?</td></tr>
+      <tr><td>3</td><td><strong>About section</strong></td><td>Is it written for the reader or about the founder? Does it have a clear CTA?</td></tr>
+      <tr><td>4</td><td><strong>Featured section</strong></td><td>Is there a lead magnet? A case study post? A booking link? Or just a website link?</td></tr>
+      <tr><td>5</td><td><strong>Content strategy</strong></td><td>Last 90 days: frequency, format mix, engagement rate, hook quality, CTA presence</td></tr>
+      <tr><td>6</td><td><strong>Positioning clarity</strong></td><td>From the profile alone, can a stranger identify who this person helps and what they solve?</td></tr>
+      <tr><td>7</td><td><strong>Conversion path</strong></td><td>Where does an interested reader go next? Is there a logical next step from every profile section?</td></tr>
+    </tbody>
+  </table>
+  <div class="h3">Day-by-day delivery</div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-day">Day 0 — Payment received</div><div class="tl-title">Send onboarding form immediately</div><div class="tl-body">LinkedIn URL, company description, average deal size, last 3 clients (how they found you), what they've tried on LinkedIn before, what success looks like to them. Do not start the audit without this.</div></div>
+    <div class="tl-item"><div class="tl-day">Day 1</div><div class="tl-title">Deep profile and content review</div><div class="tl-body">Spend 60–90 minutes on their full profile. Review their last 90 days of content. Screenshot everything notable — good and bad. Run through all 7 dimensions. Take notes in a Notion template. Do not record Loom yet.</div></div>
+    <div class="tl-item"><div class="tl-day">Day 2–3</div><div class="tl-title">Competitor scan + prioritisation</div><div class="tl-body">Find 3 competitors in their space on LinkedIn. Compare positioning, headline, content strategy. Write the prioritised action plan: 3 things to fix first, in order. Draft the written PDF summary.</div></div>
+    <div class="tl-item"><div class="tl-day">Day 4</div><div class="tl-title">Record the Loom</div><div class="tl-body">20–25 minutes. Structure: (1) What you found — 3 core problems. (2) Why it's costing them — specific pipeline impact. (3) What to fix and in what order. (4) What results look like after fixes. End with: "If you want me to implement this, that's the SIGNL Build." Do NOT ad-lib. Use your notes. Be specific.</div></div>
+    <div class="tl-item"><div class="tl-day">Day 5</div><div class="tl-title">Deliver everything</div><div class="tl-body">Send Loom link + PDF summary via email and DM. Subject line: "Your Signal Audit is ready — [Name]". Follow up in 48 hours if no acknowledgment. Ask for a testimonial on delivery.</div></div>
+  </div>
+
+  <hr class="rule">
+  <p class="h2">4b. The SIGNL Build — Project Plan</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-day">Day 0 — Kick-off</div><div class="tl-title">60-min recorded voice interview</div><div class="tl-body">Ask: What do you stand for? What are you against? Who is your best client? What do they say after working with you? What's the biggest lie in your industry? Record everything. This is your voice capture session — the raw material for everything you write.</div></div>
+    <div class="tl-item"><div class="tl-day">Days 1–4</div><div class="tl-title">Story architecture + profile rewrite</div><div class="tl-body">Write the positioning statement, headline (3 options), About section, banner brief. Send for approval. Revise once. Lock it in by Day 4.</div></div>
+    <div class="tl-item"><div class="tl-day">Days 5–9</div><div class="tl-title">Content engine build</div><div class="tl-body">Define 3–4 content pillars. Build 30-day calendar (12 post outlines with hooks). Write hook library (20 hooks adapted to their voice). Build DM outreach framework + 3 templates.</div></div>
+    <div class="tl-item"><div class="tl-day">Day 10 — Handoff</div><div class="tl-title">30-min handoff call + Loom walkthrough</div><div class="tl-body">Walk through every deliverable. Answer questions. Record a Loom of the full Notion workspace. End with: "The system is built. The question now is who runs it." Plant the retainer seed here.</div></div>
+  </div>
+
+  <hr class="rule">
+  <p class="h2">4c. DWY Retainer — Weekly Structure</p>
+  <table class="t">
+    <thead><tr><th>Touchpoint</th><th>Frequency</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Strategy call</strong></td><td>2× per month</td><td>45 min. First 10 min: metrics review. Next 25 min: content planning for next 2 weeks, problem-solving, positioning refinements. Last 10 min: DM coaching — review live conversations, refine responses.</td></tr>
+      <tr><td><strong>Content review</strong></td><td>Weekly</td><td>They send you their draft posts (1–2 per week). You return feedback within 24 hours via Loom or written comments in Notion. You are not rewriting — you are coaching their improvement.</td></tr>
+      <tr><td><strong>Monthly report</strong></td><td>Monthly</td><td>Follower growth, impressions, engagement rate, DM conversations started, any inbound leads attributed to LinkedIn. Keep it to one page.</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="rule">
+  <p class="h2">4d. DFY Retainer — Weekly Operations</p>
+  <p class="p">What your week looks like managing one DFY client at $2,000/month:</p>
+  <table class="t">
+    <thead><tr><th>Day</th><th>Activity</th><th>Time</th></tr></thead>
+    <tbody>
+      <tr><td>Monday</td><td>Write 2 posts for the week. Send for client approval by EOD.</td><td>2–3 hrs</td></tr>
+      <tr><td>Tuesday</td><td>Engagement session — 10 strategic comments on target accounts. Respond to any DMs.</td><td>45 min</td></tr>
+      <tr><td>Wednesday</td><td>Post #1 goes live (approved). Write posts for following week.</td><td>1–2 hrs</td></tr>
+      <tr><td>Thursday</td><td>Engagement session. Monitor post performance, respond to comments on their posts.</td><td>45 min</td></tr>
+      <tr><td>Friday</td><td>Post #2 goes live. Update weekly metrics log. Note anything for monthly report.</td><td>30 min</td></tr>
+    </tbody>
+  </table>
+  <p class="p">At 3 DFY clients maximum, your weekly content output is 6 posts + 3 engagement sessions = approximately 15–18 hours/week on DFY clients. This is your capacity ceiling. At $2,000/client, 3 clients = $6,000/month. Do not take on a 4th.</p>
+
+  <hr class="rule">
+  <p class="h2">4e. Client Onboarding — First 48 Hours</p>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><div class="step-body"><div class="step-name">Immediately on payment</div><div class="step-desc">Send a confirmation email with: welcome message, what happens next (timeline), the onboarding form link, and your Calendly link for the kick-off call. Response time sets the tone for the entire engagement. If they pay on a Saturday, respond on Saturday.</div></div></div>
+    <div class="step"><div class="step-n">2</div><div class="step-body"><div class="step-name">Within 24 hours</div><div class="step-desc">Review their onboarding form responses. Do a preliminary scan of their LinkedIn. Send a short voice note or Loom (60 seconds): "Got your form, had a first look at your profile. Already see [one specific insight]. Excited to dive in." This moment of over-delivery is where referrals are born.</div></div></div>
+    <div class="step"><div class="step-n">3</div><div class="step-body"><div class="step-name">Kick-off call (within 48 hours)</div><div class="step-desc">For Build and Retainer clients only. Run the voice capture interview. Set expectations: what you need from them, what they can expect from you, response time commitments, approval windows. End the call with: "Here is exactly what I'm building and when you'll have it."</div></div></div>
+  </div>
+
+  <hr class="rule">
+  <p class="h2">4f. Tools Stack</p>
+  <table class="t">
+    <thead><tr><th>Tool</th><th>Use</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Loom</strong></td><td>Audit delivery, feedback, onboarding walkthroughs</td><td>Free (5 min limit) → $12.50/mo for unlimited — get this on first client revenue</td></tr>
+      <tr><td><strong>Notion</strong></td><td>Client workspaces, CRM, content calendars, hook libraries, project tracking</td><td>Free</td></tr>
+      <tr><td><strong>Canva</strong></td><td>PDF audit summaries, banner briefs, monthly report templates</td><td>Free</td></tr>
+      <tr><td><strong>Calendly</strong></td><td>Sales call booking, kick-off calls, monthly strategy calls</td><td>Free</td></tr>
+      <tr><td><strong>Wise</strong></td><td>Receive USD payments from international clients — set this up on Day 1</td><td>Free to open, small transfer fee</td></tr>
+      <tr><td><strong>Carrd.co</strong></td><td>Landing page for lead magnet / freebie</td><td>Free (or $19/year for custom domain)</td></tr>
+      <tr><td><strong>Mailchimp</strong></td><td>Email list for freebie downloaders, 4-email nurture sequence</td><td>Free up to 500 contacts</td></tr>
+      <tr><td><strong>Apollo.io</strong></td><td>Find email addresses for cold email outreach to SaaS founders</td><td>Free tier (50 exports/month)</td></tr>
+    </tbody>
+  </table>
+  <div class="box warn"><div class="box-label">Day 1 priority — before anything else</div><p>Set up Wise to receive USD payments. Without this, you cannot get paid. This is your single most important task before any outreach. Go to wise.com, create a business account, add your Pakistani bank details. Takes 1–2 business days to verify.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S5 · CONTENT                               -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter reveal" id="s5">
+  <div class="chapter-inner">
+    <span class="chapter-tag">SECTION 05</span>
+    <div>
+      <h1 class="chapter-title">Content &amp;<br><em>Personal Brand</em></h1>
+      <p class="chapter-sub">What to post, how often, and how to make your one case study do the work of ten.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <p class="h2">5a. What drove your 100K+ posts</p>
+  <p class="p">You hit 100K+ impressions with hot-take / contrarian opinion posts. This tells you something specific: your audience responds to you being willing to say what others won't. The LinkedIn algorithm rewards content that creates a strong reaction — agreement or disagreement, not neutrality. Generic advice disappears. A strong contrarian take gets shared, debated, and remembered.</p>
+  <div class="box gold"><div class="box-label">The replication principle</div><p>Every viral post you write will have the same DNA: a claim that makes someone in your ICP say either "yes, EXACTLY" or "wait, that's wrong." Both reactions cause engagement. Neutral posts cause scrolling. Your natural writing style is your biggest asset — don't sand it down to be palatable. The founders who will hire you need to see the edge first.</p></div>
+
+  <div class="h3">Content pillar framework — 4 pillars for a LinkedIn growth strategist</div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-n">01</div>
+      <div class="pillar-name">The Contrarian Take</div>
+      <div class="pillar-desc">Challenge a widely-held belief about LinkedIn, content, or founder branding. This is your highest-impression format. Post once per week.</div>
+      <div class="pillar-ex"><div class="pillar-ex-l">Example angles</div><p>"Posting every day is killing your LinkedIn." · "Follower count is a vanity metric that costs you clients." · "Your About section is the reason you get no inbound."</p></div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-n">02</div>
+      <div class="pillar-name">The Behind-the-Results Story</div>
+      <div class="pillar-desc">Case study posts, client transformation stories, what you learned from specific work. Builds credibility through specificity. Post once per week.</div>
+      <div class="pillar-ex"><div class="pillar-ex-l">Example angles</div><p>"This founder had 0 followers. Here's the 3 things we changed in week 1." · "The exact hook structure that got 400K impressions in 90 days."</p></div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-n">03</div>
+      <div class="pillar-name">The Tactical Breakdown</div>
+      <div class="pillar-desc">Step-by-step frameworks your ICP can use immediately. Demonstrates expertise without pitching. Post once per week. Always end with the freebie CTA.</div>
+      <div class="pillar-ex"><div class="pillar-ex-l">Example angles</div><p>"How to write a LinkedIn headline that generates inbound (with examples)." · "The 5-part DM that gets replies from cold leads."</p></div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-n">04</div>
+      <div class="pillar-name">The Personal Story</div>
+      <div class="pillar-desc">Your journey: being laid off on Day 1, building SIGNL from $36, the patterns you're learning. This is the trust-builder. Post 2–3× per month, not weekly.</div>
+      <div class="pillar-ex"><div class="pillar-ex-l">Example angles</div><p>"I got laid off today. Here's what I'm building." · "Month 1 of SIGNL: what worked, what didn't, what I'd do differently."</p></div>
+    </div>
+  </div>
+
+  <div class="h3">Weekly content calendar</div>
+  <table class="t">
+    <thead><tr><th>Day</th><th>Post type</th><th>Pillar</th><th>CTA</th></tr></thead>
+    <tbody>
+      <tr><td>Monday</td><td>Contrarian take</td><td>Pillar 1</td><td>None — let it spread</td></tr>
+      <tr><td>Wednesday</td><td>Tactical breakdown</td><td>Pillar 3</td><td>Comment AUDIT for free checklist</td></tr>
+      <tr><td>Friday</td><td>Story / case study</td><td>Pillar 2 or 4</td><td>Soft: "DM me if this resonates"</td></tr>
+    </tbody>
+  </table>
+  <p class="p">3 posts per week. Not 5, not 7. Quality beats volume when you're building from 130 followers. Each post needs to be good enough to screenshot and share. If it isn't, don't post it.</p>
+
+  <hr class="rule">
+  <p class="h2">5b. The Nick FarrenKopf Case Study Post — Framework</p>
+  <p class="p">This is your most important piece of content. It needs to be structured to generate inbound DMs, not just impressions. Do not write it as a brag. Write it as a diagnostic — "here's why his LinkedIn wasn't working, here's what we changed, here's what happened."</p>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><div class="step-body"><div class="step-name">The hook — 3 options to test</div><div class="step-desc">Option A: "I took a SaaS founder from 0 to 3,490 LinkedIn followers in 90 days. Here's the exact problem I fixed first." Option B: "Most SaaS founders have the same LinkedIn problem. Here's how I diagnosed it — and what happened after." Option C: "Nick had a great product and zero LinkedIn presence. 90 days later: 3,490 followers, 400K impressions. Thread on what we actually did."</div></div></div>
+    <div class="step"><div class="step-n">2</div><div class="step-body"><div class="step-name">The before — make it specific and painful</div><div class="step-desc">Describe exactly what his LinkedIn looked like before. Not "it wasn't performing." Name the specific problems: the headline, the About section, the content frequency, the positioning gap. Make the reader recognise themselves.</div></div></div>
+    <div class="step"><div class="step-n">3</div><div class="step-body"><div class="step-name">The diagnosis — name your mechanism</div><div class="step-desc">"Here's what I found when I ran the Signal Audit on his profile..." Walk through 2–3 specific things that were broken. This is the section where you demonstrate expertise. Be specific about what was wrong and why it was wrong.</div></div></div>
+    <div class="step"><div class="step-n">4</div><div class="step-body"><div class="step-name">The intervention — what you changed</div><div class="step-desc">Describe the 3 biggest changes made. Headline rewrite. Content pillar definition. Engagement strategy. Be specific about what changed and why. This is the trust-builder section.</div></div></div>
+    <div class="step"><div class="step-n">5</div><div class="step-body"><div class="step-name">The result — verifiable, specific, understated</div><div class="step-desc">"90 days later: 0 to 3,490 followers. 400K total impressions. His profile is live — you can check it right now." Do not exaggerate. The verifiability is the credibility. Point to his profile explicitly.</div></div></div>
+    <div class="step"><div class="step-n">6</div><div class="step-body"><div class="step-name">The CTA — one specific ask</div><div class="step-desc">"If your LinkedIn looks like Nick's did at the start of this — I run a full diagnostic called the Signal Audit. $350, 5 days, personal Loom. DM me 'AUDIT' and I'll tell you if it's the right fit."</div></div></div>
+  </div>
+
+  <div class="h3">Engagement strategy — the part most people skip</div>
+  <p class="p">Post 3 times per week. Leave 10 genuine comments per day on posts from people in your ICP. Not "great post." Real comments: add a perspective, challenge an assumption, share a relevant experience. Do this every single day. This is how you become a familiar name before you send a cold DM. It is also how LinkedIn's algorithm starts showing your content to more people in your niche.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S6 · FINANCIAL MODEL                       -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter reveal" id="s6">
+  <div class="chapter-inner">
+    <span class="chapter-tag">SECTION 06</span>
+    <div>
+      <h1 class="chapter-title">Financial<br><em>Model</em></h1>
+      <p class="chapter-sub">Real numbers. Real runway. The floor scenario. The ceiling. When to raise prices.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <div class="box warn"><div class="box-label">Assumptions baked into this model</div><p>Exchange rate: 1 USD = 278 PKR. Monthly fixed costs: 8,000 PKR (~$29) — Claude + phone. No paid tools until Month 2. Cold outreach conversion rate: 2–3% of DMs lead to a sales call, 30–40% of calls close. These are conservative. Your actual rate may be higher or lower — adjust monthly.</p></div>
+
+  <p class="h2">6a. 12-Month Revenue Projection</p>
+  <table class="fin-t">
+    <thead><tr><th>Month</th><th>Offer mix</th><th>Clients</th><th>USD</th><th>PKR</th><th>Running total</th></tr></thead>
+    <tbody>
+      <tr class="crit"><td>Mar '26</td><td>1× Signal Audit ($350)</td><td>1</td><td>$350</td><td>97,300</td><td>$350</td></tr>
+      <tr><td>Apr '26</td><td>1× Audit + 1× SIGNL Build ($1,200)</td><td>2</td><td>$1,550</td><td>430,900</td><td>$1,900</td></tr>
+      <tr><td>May '26</td><td>1× Build ($1,500) + 1× DWY Retainer ($700)</td><td>2</td><td>$2,200</td><td>611,600</td><td>$4,100</td></tr>
+      <tr><td>Jun '26</td><td>2× DWY Retainer + 1× Audit</td><td>3</td><td>$1,750</td><td>486,500</td><td>$5,850</td></tr>
+      <tr><td>Jul '26</td><td>2× DWY + 1× Build ($1,500)</td><td>3</td><td>$2,900</td><td>806,200</td><td>$8,750</td></tr>
+      <tr><td>Aug '26</td><td>2× DWY + 1× DFY Retainer ($2,000)</td><td>3</td><td>$3,400</td><td>945,200</td><td>$12,150</td></tr>
+      <tr class="hl"><td>Sep '26</td><td>1× DFY + 2× DWY + 1× Audit</td><td>4</td><td>$3,750</td><td>1,042,500</td><td>$15,900</td></tr>
+      <tr><td>Oct '26</td><td>2× DFY + 1× DWY</td><td>3</td><td>$4,700</td><td>1,306,600</td><td>$20,600</td></tr>
+      <tr><td>Nov '26</td><td>2× DFY + 2× DWY</td><td>4</td><td>$5,400</td><td>1,501,200</td><td>$26,000</td></tr>
+      <tr><td>Dec '26</td><td>3× DFY + 1× DWY</td><td>4</td><td>$6,700</td><td>1,862,600</td><td>$32,700</td></tr>
+      <tr><td>Jan '27</td><td>3× DFY + 1× DWY + 2× Audits</td><td>6</td><td>$7,400</td><td>2,057,200</td><td>$40,100</td></tr>
+      <tr class="tot"><td>Feb '27</td><td>3× DFY + 2× DWY + 1× Build</td><td>6</td><td>$8,500</td><td>2,363,000</td><td>$48,600</td></tr>
+    </tbody>
+  </table>
+  <div class="box info"><div class="box-label">This model assumes</div><p>Audit clients from Month 1 naturally upsell to Build in Month 2. Build clients upsell to DWY in Month 3. One DWY client upgrades to DFY by Month 6. Referrals start in Month 4 from the first happy client. None of this is guaranteed. It is the model. Track against it monthly.</p></div>
+
+  <hr class="rule">
+  <p class="h2">6b. Pricing Strategy — When to Raise</p>
+  <table class="t">
+    <thead><tr><th>Trigger</th><th>Price change</th></tr></thead>
+    <tbody>
+      <tr><td>After 3 paid Signal Audits delivered</td><td>Raise Audit to $450 standard / $600 premium</td></tr>
+      <tr><td>After 2 SIGNL Builds delivered with results</td><td>Raise Build to $1,500–$2,200</td></tr>
+      <tr><td>After 3 months of any DWY retainer</td><td>Raise DWY to $900/month for new clients</td></tr>
+      <tr><td>When DFY waitlist exceeds 2 people</td><td>Raise DFY to $2,500–$3,000 immediately</td></tr>
+      <tr><td>Year 2 — with 5+ case studies</td><td>Audit $600 / Build $2,500 / DWY $1,200 / DFY $3,500+</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="rule">
+  <p class="h2">6c. Cost Structure</p>
+  <table class="fin-t">
+    <thead><tr><th>Item</th><th>PKR/month</th><th>USD/month</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Claude Pro</td><td>6,000</td><td>$22</td><td>Non-negotiable — primary work tool</td></tr>
+      <tr><td>Phone bill</td><td>2,000</td><td>$7</td><td>Fixed</td></tr>
+      <tr><td>Loom Pro</td><td>3,475</td><td>$12.50</td><td>Add after first client payment</td></tr>
+      <tr><td>Carrd.co</td><td>437</td><td>$1.58</td><td>Landing page — add in Week 1</td></tr>
+      <tr><td>Food / personal</td><td>5,000</td><td>$18</td><td>Covered at home — stay disciplined</td></tr>
+      <tr class="tot"><td><strong>Total monthly burn</strong></td><td><strong>~16,912</strong></td><td><strong>~$61</strong></td><td>After first client. Before: ~8,000 PKR</td></tr>
+    </tbody>
+  </table>
+  <p class="p">Break-even point: <strong>$61/month</strong> once Loom Pro is added. One Signal Audit at $350 covers 5.7 months of operational costs. Your burn is genuinely that low. This is the advantage of living at home with no debt.</p>
+
+  <hr class="rule">
+  <p class="h2">6d. Cash Flow Reality</p>
+  <div class="box warn"><div class="box-label">The real deadline</div><p>You have 4 months of runway at 8,000 PKR/month burn = ~32,000 PKR total = ~$115. Your first client must pay before the end of <strong>April 2026</strong> (Day 52) to avoid a genuine financial crisis. The actual target is end of <strong>March 2026</strong> (Day 21). That is 21 days from today to close your first $350 audit. That is the only number that matters right now.</p></div>
+  <table class="fin-t">
+    <thead><tr><th>Scenario</th><th>First client by</th><th>Outcome</th></tr></thead>
+    <tbody>
+      <tr class="go" style=""><td>Best case</td><td>Day 14 (Mar 24)</td><td>$350 in. Psychological proof. Momentum compounds. Month 2 upsell is natural.</td></tr>
+      <tr class="hl"><td>Target case</td><td>Day 21 (Mar 31)</td><td>$350 in. Covers 1.5 months of fixed costs. Runway extends to 5.5 months.</td></tr>
+      <tr><td>Acceptable case</td><td>Day 45 (Apr 24)</td><td>Tight but survivable if mother/Mamu money returns. Don't let it get here.</td></tr>
+      <tr class="crit"><td>Crisis scenario</td><td>Day 60+ (May 9+)</td><td>Runway exhausted. Psychological damage compounds. Recovery is harder. Avoid this at all costs.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S7 · 90-DAY PLAN                           -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter reveal" id="s7">
+  <div class="chapter-inner">
+    <span class="chapter-tag">SECTION 07</span>
+    <div>
+      <h1 class="chapter-title">90-Day<br><em>Execution Plan</em></h1>
+      <p class="chapter-sub">Not goals. Actions. Specific, daily, trackable. Nothing in here requires permission.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <p class="h2">7a. Days 1–30: Foundation + First Client</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-day">Day 1–2 (Today + Tomorrow)</div><div class="tl-title">Infrastructure — non-negotiable</div><div class="tl-body">1. Set up Wise account to receive USD. 2. Update LinkedIn headline to: "I help SaaS + agency founders turn LinkedIn into an inbound pipeline | Signal Audit → $350 | Nick FarrenKopf: 0 to 3,490 followers in 90 days." 3. Add case study details to Featured section. 4. Create Notion CRM: columns = Name, Company, URL, Followers, Last Post Date, DM Status, Notes.</div></div>
+    <div class="tl-item"><div class="tl-day">Day 3–7</div><div class="tl-title">Build your prospect list — 100 targets</div><div class="tl-body">Find 100 SaaS or agency founders on LinkedIn with 500–5,000 followers who post inconsistently. Search: "SaaS founder" + filter by 500–5K followers. Check last post date. Add to Notion CRM. Do not DM yet. You need the list before the outreach.</div></div>
+    <div class="tl-item"><div class="tl-day">Day 3–7 (parallel)</div><div class="tl-title">Build the freebie + landing page</div><div class="tl-body">Create the 7-Point LinkedIn Audit PDF in Canva. Set up Carrd.co landing page. Set up Mailchimp 4-email sequence. This takes 1 day total if you focus. Do it before you start posting CTAs.</div></div>
+    <div class="tl-item"><div class="tl-day">Day 8–14</div><div class="tl-title">Warm-up: 10 genuine comments per day</div><div class="tl-body">Comment on posts from your 100-person prospect list. Real comments only — add a perspective, challenge an assumption, share something specific. Do this for 7 days before sending any DMs. You're becoming a familiar name. Spend 45 minutes every morning on this.</div></div>
+    <div class="tl-item"><div class="tl-day">Day 8–14 (parallel)</div><div class="tl-title">Post 3 times this week</div><div class="tl-body">Post 1 (Monday): Your contrarian take — "The biggest lie in LinkedIn growth." Post 2 (Wednesday): Tactical breakdown — "7 things I check on every LinkedIn profile before anything else." CTA: Comment AUDIT. Post 3 (Friday): Your story — "I was laid off on March 10. Here's what I'm building and why."</div></div>
+    <div class="tl-item"><div class="tl-day">Day 15–21</div><div class="tl-title">Cold outreach begins — 10 DMs + 5 emails per day</div><div class="tl-body">Send 10 LinkedIn DMs per day to your warm list (the ones you've commented on). Send 5 cold emails per day to founders found via Apollo.io. Use the DM framework from Section 3. Track every send in Notion. Target: 10 DMs sent by Day 15. 100 total by Day 21. Expected response rate at this stage: 5–10%.</div></div>
+    <div class="tl-item"><div class="tl-day">Day 22–30</div><div class="tl-title">Follow-up + iterate + close</div><div class="tl-body">Follow up once on every DM sent in Days 15–21 that didn't reply. Take every call that books. Close the audit on the call. Do not leave a call without a clear next step — either a yes, a no, or a specific follow-up date. By Day 30, you should have had at least 3–5 sales conversations. If not: the DM is wrong, not the offer.</div></div>
+  </div>
+
+  <hr class="rule">
+  <p class="h2">7b. Days 31–60: Momentum + First Upsell</p>
+  <p class="p">By Day 30 you should have at least one paying client or a signed invoice. If yes: deliver excellently, ask for a testimonial, plant the upsell seed. If no: the DM framework needs to change. Split-test a different opening observation. The offer is not the problem — the hook is.</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-day">Days 31–45</div><div class="tl-title">Deliver first audit + post case study content</div><div class="tl-body">Deliver your first audit with over-delivery (send a 5-minute "I noticed one more thing" Loom after delivery). Ask for a testimonial immediately after the Loom is received. Post your first case study post using the framework from Section 5b — but only after the client confirms they're happy. Use their words, not yours.</div></div>
+    <div class="tl-item"><div class="tl-day">Days 31–60 (parallel)</div><div class="tl-title">Continue outreach — 10 DMs + 5 emails daily</div><div class="tl-body">Do not stop cold outreach because you have one client. One client is not a business. Keep the pipeline moving. Your DMs should now reference your published content — "I wrote a post about this recently that might be useful before you decide." Content and outreach compound together.</div></div>
+    <div class="tl-item"><div class="tl-day">Days 45–60</div><div class="tl-title">Pitch the SIGNL Build to your first audit client</div><div class="tl-body">After delivering the audit, send: "I've outlined everything that needs to change. If you'd like me to actually build it for you rather than handing you a to-do list, that's the SIGNL Build — $1,200, 2 weeks. Want to discuss?" This is your first upsell. The conversion rate from audit to build should be 30–50% because the problem is already diagnosed.</div></div>
+  </div>
+
+  <hr class="rule">
+  <p class="h2">7c. Days 61–90: Scale + Systems</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-day">Days 61–75</div><div class="tl-title">Add your first retainer client</div><div class="tl-body">You should have 2–3 paying clients in different offers by now. One of them is ready for a retainer conversation. Pitch the DWY Partnership to whoever has been most engaged. Frame it: "You've got the system now — want me to stay in your corner as you execute it?"</div></div>
+    <div class="tl-item"><div class="tl-day">Days 76–90</div><div class="tl-title">Review, refine, raise prices</div><div class="tl-body">At Day 90: count how many audits delivered, how many builds, what your conversion rates look like. If you've delivered 3+ audits, raise the price to $450. If you have a retainer client, document what the first month looked like and systematise it. Raise prices before you need to, not after you're overbooked.</div></div>
+  </div>
+
+  <hr class="rule">
+  <p class="h2">7d. Weekly Non-Negotiables</p>
+  <div class="nonneg">
+    <div class="nn"><span class="nn-n">10</span><div class="nn-t">Cold DMs or emails sent every weekday</div></div>
+    <div class="nn"><span class="nn-n">3</span><div class="nn-t">LinkedIn posts published every week</div></div>
+    <div class="nn"><span class="nn-n">10</span><div class="nn-t">Genuine comments left daily on ICP posts</div></div>
+    <div class="nn"><span class="nn-n">1</span><div class="nn-t">Sunday evening Notion review: pipeline, revenue, what broke</div></div>
+    <div class="nn"><span class="nn-n">0</span><div class="nn-t">Discounts. No exceptions. Not once.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S8 · RISKS                                 -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter reveal" id="s8">
+  <div class="chapter-inner">
+    <span class="chapter-tag">SECTION 08</span>
+    <div>
+      <h1 class="chapter-title">Risks &amp;<br><em>Failure Modes</em></h1>
+      <p class="chapter-sub">The three most likely ways SIGNL fails in 90 days. Early signals. Interventions. Pivots.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <div class="risk">
+    <div class="risk-head"><span class="risk-n">RISK 01</span><span class="risk-name">The Preparation Trap — Building instead of selling</span></div>
+    <div class="risk-bd">
+      <div><div class="risk-col-l">What it looks like</div><p>Day 15 arrives and the Notion CRM is beautifully organised, the freebie PDF has been redesigned 3 times, the landing page is almost done, and zero DMs have been sent. This is your most documented pattern. It happened with Buraq. It happened with every previous job. Infrastructure feels like progress.</p></div>
+      <div><div class="risk-col-l">Early warning signal</div><p>If by Day 7 you have not sent your first DM, you are in this trap. The signal is: you are doing tasks that feel productive but don't require speaking to a human.</p></div>
+      <div style="grid-column:1/-1"><div class="risk-col-l">Intervention</div><p>The rule is simple: before any design work, any refinement, any infrastructure build — send 5 DMs first. Every single day. DMs before everything. The freebie can be ugly. The landing page can be basic. The first DM just needs to be sent.</p></div>
+    </div>
+  </div>
+
+  <div class="risk">
+    <div class="risk-head"><span class="risk-n">RISK 02</span><span class="risk-name">The Credibility Spiral — Prospect asks hard questions and you fold</span></div>
+    <div class="risk-bd">
+      <div><div class="risk-col-l">What it looks like</div><p>A prospect asks "how many clients have you worked with?" or "can you show me more case studies?" and instead of going straight to Nick's results, you apologise, over-explain, discount the offer, or let the conversation die. The credibility challenge is the second biggest conversion killer after not reaching out at all.</p></div>
+      <div><div class="risk-col-l">Early warning signal</div><p>You re-read your DM before sending it and add a disclaimer about your experience level. Or on a call, you volunteer that Nick is your only case study before they've even asked.</p></div>
+      <div style="grid-column:1/-1"><div class="risk-col-l">Intervention</div><p>Memorise this and say it out loud until it sounds natural: "My job is to grow your LinkedIn, not mine. Here's what I generated for Nick FarrenKopf — 0 to 3,490 followers, 400K impressions, 90 days. His profile is live right now, you can check it." Then redirect to their problem. You never apologise for your follower count. Ever.</p></div>
+    </div>
+  </div>
+
+  <div class="risk">
+    <div class="risk-head"><span class="risk-n">RISK 03</span><span class="risk-name">The Metric Inflation Problem — Case study falls apart under scrutiny</span></div>
+    <div class="risk-bd">
+      <div><div class="risk-col-l">What it looks like</div><p>Your operating manual flags this directly: "A case study with inflated metrics that could destroy credibility with any serious prospect who checks." If any part of the Nick case study cannot be verified by a stranger looking at his live profile, it is a liability. Not an asset.</p></div>
+      <div><div class="risk-col-l">Early warning signal</div><p>You feel hesitation before sending the case study link. Or you qualify it with "approximately" or "around" when describing results.</p></div>
+      <div style="grid-column:1/-1"><div class="risk-col-l">Intervention</div><p>Before any outreach: verify exactly what his profile shows right now. Use only the numbers that are visible and checkable by anyone. The correct statement is: "0 to 3,490 followers, 400K total impressions over 90 days — his profile is live, you can check it right now." If the follower count has changed since then, adjust. Use whatever the verifiable reality is. Credibility built on one clean case study is worth more than ten inflated ones.</p></div>
+    </div>
+  </div>
+
+  <hr class="rule">
+  <p class="h2">8c. Pivot Options — If LinkedIn growth stalls</p>
+  <p class="p">If by Day 60 you have sent 300+ DMs and closed zero clients, the problem is one of three things: wrong ICP, wrong offer framing, or wrong channel. Before pivoting the whole business, test each variable individually. But if you need to pivot the service:</p>
+  <table class="t">
+    <thead><tr><th>Adjacent service</th><th>Why your skills transfer</th><th>How to price it</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cold email copywriting + system setup</strong></td><td>You can write. You understand outreach. Cold email is adjacent to LinkedIn DM work and has a larger market.</td><td>$500 setup + $300/month management</td></tr>
+      <tr><td><strong>Founder personal brand consulting (not just LinkedIn)</strong></td><td>Your positioning, story architecture, and content system skills apply to newsletters, Twitter/X, and podcast guesting — not just LinkedIn.</td><td>$1,500–$2,500 one-time brand strategy</td></tr>
+      <tr><td><strong>SaaS content strategy</strong></td><td>You understand SaaS founder positioning. Content strategy for SaaS companies (blog, newsletter, social) uses the same analytical and writing skills.</td><td>$1,000–$2,000/month retainer</td></tr>
+    </tbody>
+  </table>
+  <div class="box info"><div class="box-label">Don't pivot before Day 60</div><p>Most pivots happen because outreach was inconsistent, not because the market rejected the offer. Run the full system at full volume for 60 days before you conclude the offer doesn't work. 300 DMs is the minimum sample size for a real test.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S9 · SIGNL AGENCY SITE PLAN                -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter reveal" id="s9">
+  <div class="chapter-inner">
+    <span class="chapter-tag">SECTION 09</span>
+    <div>
+      <h1 class="chapter-title">SIGNL Agency<br><em>Site Plan</em></h1>
+      <p class="chapter-sub">One-page landing page. Structure, copy direction, section order, and CTA logic for the SIGNL.so website.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <div class="box gold"><div class="box-label">Purpose of this site</div><p>The SIGNL agency site has one job: convert a warm or cold visitor into either a booked call for the Signal Audit or a direct DM. It is not a portfolio site. It is not a brochure. It is a sales page with one offer above the fold and everything else as supporting evidence. Every section earns the next CTA.</p></div>
+
+  <p class="h2">Section Order + Copy Direction</p>
+  <div class="site-plan">
+    <div class="site-plan-head"><span class="site-plan-name">SIGNL. Agency Site</span><span class="site-plan-url">signl.so (or signl.vercel.app)</span></div>
+    <div class="site-plan-body">
+      <div class="h3">Section 1 — Hero (above the fold)</div>
+      <p class="p"><strong>Headline:</strong> "Your LinkedIn is invisible. Let's fix that." <br><strong>Subheadline:</strong> "We help SaaS and agency founders turn LinkedIn into a predictable inbound pipeline — using done-for-you content and positioning, not follower chasing." <br><strong>CTA button:</strong> "Get the Signal Audit — $350" → links to Calendly. <br><strong>Below button:</strong> "5 business days · Personal Loom walkthrough · One prioritised action plan"</p>
+      <div class="wire">HERO WIREFRAME:
+─────────────────────────────────────────────────
+SIGNL.                              [Book Audit →]
+─────────────────────────────────────────────────
+
+"Your LinkedIn is invisible.
+ Let's fix that."
+
+  We help SaaS + agency founders turn LinkedIn 
+  into a predictable inbound pipeline.
+
+  [Get the Signal Audit — $350]
+  5 days · Personal Loom · Prioritised action plan
+
+─────────────────────────────────────────────────</div>
+
+      <div class="h3">Section 2 — The Problem (make them feel seen)</div>
+      <p class="p"><strong>Heading:</strong> "You're not getting leads from LinkedIn. Here's why." <br>3 short pain points with a headline + one sentence each: "You're posting into the void" / "Your profile reads like a CV" / "You've got no system — just bursts and burnout." Do not offer solutions here. Just name the pain with precision. Founders who see themselves in this section will keep reading.</p>
+
+      <div class="h3">Section 3 — The Mechanism (what you do differently)</div>
+      <p class="p"><strong>Heading:</strong> "The SIGNL Method — 5 steps from invisible to inbound." <br>Display all 5 steps from Section 1c. Keep descriptions short (1 sentence each). This section answers: "What is your process?" It also seeds the vocabulary — every time you say "Signal Audit" or "Story Architecture" on a call, they've already seen it here.</p>
+
+      <div class="h3">Section 4 — The Proof (Nick's case study)</div>
+      <p class="p"><strong>Heading:</strong> "0 to 3,490 followers. 400,000 impressions. 90 days." <br>Tell Nick's story using the case study framework from Section 5b. Keep it to 200 words. Include: the before state, what was changed, the specific verifiable result, a quote from his testimonial. End with: "His profile is live. See it for yourself → [link to his LinkedIn]." The link to a live, verifiable profile is your biggest trust signal. Use it.</p>
+
+      <div class="h3">Section 5 — The Offer (clear, specific, priced)</div>
+      <p class="p"><strong>Heading:</strong> "Start with a Signal Audit." <br>Describe the audit exactly as in Section 2a of this plan. Price it clearly: $350 / $500 premium. List what's included. List what's NOT included. Add: "This is the right first step if your LinkedIn isn't generating leads and you don't know exactly why." Single CTA: "Book your Signal Audit." Do not show all four offers here. One offer. One decision.</p>
+
+      <div class="h3">Section 6 — The Bigger Picture (brief)</div>
+      <p class="p"><strong>Heading:</strong> "What happens after the audit." <br>One paragraph. Briefly name the other offers (Build, Partnership, Engine) as natural next steps, not as a pitch. "Most clients start with the audit. From there, depending on what we find, the next step is either building the system yourself or having us build it for you." No prices here. This section exists to show there's a longer relationship available, not to sell all four tiers at once.</p>
+
+      <div class="h3">Section 7 — Final CTA (simple, urgent, low-friction)</div>
+      <p class="p"><strong>Heading:</strong> "Your LinkedIn has been invisible long enough." <br><strong>CTA:</strong> "Book the Signal Audit — $350" → Calendly link. <br><strong>Alternative CTA:</strong> "Or DM me on LinkedIn if you'd rather talk first → [LinkedIn profile link]." Always give two paths: the high-commitment (book + pay) and the low-commitment (send a message). Some founders need the DM first.</p>
+
+      <div class="h3">Visual identity direction</div>
+      <p class="p"><strong>Palette:</strong> Deep navy (#0D1A2A), steel blue (#2E6DA4), light mist (#EEF3F8), white. <strong>Fonts:</strong> Playfair Display for headlines (editorial authority), DM Sans for body (clean, professional). <strong>Tone:</strong> Direct, not aggressive. Confident, not arrogant. The site should feel like it was built by someone who knows exactly what they're doing — sparse, precise, no filler.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+  <p class="h2">Technical Setup</p>
+  <table class="t">
+    <thead><tr><th>Item</th><th>Tool</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td>Build + host</td><td>Vercel (deploy from GitHub) — HTML/CSS/JS or Next.js</td><td>Free</td></tr>
+      <tr><td>Domain</td><td>signl.so or signl.agency via Namecheap or Cloudflare</td><td>~$10–15/year</td></tr>
+      <tr><td>Booking</td><td>Calendly embedded or linked</td><td>Free</td></tr>
+      <tr><td>Form (if needed)</td><td>Tally.so — free, clean, embeds anywhere</td><td>Free</td></tr>
+    </tbody>
+  </table>
+  <div class="box warn"><div class="box-label">Do not build this before Day 7</div><p>The site is credibility infrastructure, not a client generation engine. It supports outreach — it doesn't replace it. Build it in Week 1 after setting up Wise and building the prospect list. Allocate one focused day (4–6 hours) to build the full site. Do not let it consume a week.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S10 · AHMAD PERSONAL SITE + LINKEDIN       -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="chapter reveal" id="s10">
+  <div class="chapter-inner">
+    <span class="chapter-tag">SECTION 10</span>
+    <div>
+      <h1 class="chapter-title">Ahmad Farooq —<br><em>Personal Positioning</em></h1>
+      <p class="chapter-sub">Your LinkedIn profile. Your personal site. Two separate surfaces. One coherent identity.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <div class="box info"><div class="box-label">The distinction that matters</div><p>SIGNL. is the agency brand. Ahmad Farooq is the person behind it. The agency site converts strangers into clients. Your personal site and LinkedIn profile convert clients who've already decided on you — they're doing due diligence. The personal surface needs to show: who you are, how you think, what you believe, and why you specifically are the right person to trust with someone's LinkedIn presence.</p></div>
+
+  <p class="h2">Your LinkedIn Profile — Full Optimisation Plan</p>
+  <div class="h3">Headline — the most important field on the profile</div>
+  <div class="site-plan">
+    <div class="site-plan-head"><span class="site-plan-name">Recommended headline</span></div>
+    <div class="site-plan-body">
+      <p class="p" style="font-family:'DM Mono',monospace;font-size:.9rem;line-height:1.8">LinkedIn Growth Strategist for SaaS + Agency Founders | Built the SIGNL Method | Nick FarrenKopf: 0 → 3,490 followers in 90 days | Signal Audit → $350</p>
+      <p class="p" style="margin-top:1rem"><strong>Why this works:</strong> It names your ICP immediately. It names your mechanism. It names your case study result (verifiable, specific). It names your offer with a price. A prospect who reads this headline knows in 5 seconds whether they are the right person to contact you. Headlines that filter are better than headlines that appeal to everyone.</p>
+    </div>
+  </div>
+
+  <div class="h3">Banner</div>
+  <p class="p">Dark navy background. Clean sans-serif text: "LinkedIn → Inbound Pipeline · SIGNL." Bottom right: "Signal Audit · $350 · 5 days." No stock images. No gradient overlays. No headshot in the banner (your profile photo does that). The banner should look like it was designed by someone who takes positioning seriously — because you do.</p>
+
+  <div class="h3">About section — rewrite framework</div>
+  <div class="wire">STRUCTURE:
+
+[Line 1 — Hook. Make them stop.]
+Most SaaS founders have a LinkedIn profile. Almost none have a LinkedIn pipeline.
+
+[Lines 2–4 — Who you help + what you fix]
+I work with SaaS and agency founders who are posting inconsistently, getting zero inbound, 
+and watching their competitors show up everywhere on LinkedIn while they stay invisible.
+
+I fix three things:
+→ Your positioning (the reason people scroll past without reacting)
+→ Your content system (the reason you can't stay consistent)  
+→ Your conversion path (the reason impressions don't turn into conversations)
+
+[The case study — brief, verifiable]
+Nick FarrenKopf: 0 to 3,490 followers, 400,000 impressions in 90 days.
+His profile is live. Check it.
+
+[What I do]
+I run SIGNL — a LinkedIn growth and positioning system for founders.
+Starting point: the Signal Audit ($350, 5 days, personal Loom walkthrough).
+
+[CTA — one action]
+→ DM me "AUDIT" and I'll take a look at your profile.
+→ Or book directly: [Calendly link]</div>
+
+  <div class="h3">Featured section</div>
+  <table class="t">
+    <thead><tr><th>Slot</th><th>What goes here</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Featured 1</td><td>The Nick case study post (when published) or a link to the SIGNL audit page</td><td>First thing a profile visitor clicks — must convert</td></tr>
+      <tr><td>Featured 2</td><td>Your best-performing contrarian post (when you have one with 10K+ impressions)</td><td>Social proof of content ability</td></tr>
+      <tr><td>Featured 3</td><td>The free 7-point audit PDF (link to landing page)</td><td>Lead magnet — gives strangers a reason to engage</td></tr>
+    </tbody>
+  </table>
+
+  <div class="h3">Activity strategy</div>
+  <p class="p">Post 3× per week using the pillar framework from Section 5. Comment 10× per day on ICP posts. Respond to every comment on your own posts within 4 hours. Connect with every prospect after commenting on their post — the connection request is warmer because they've seen your comment first. Accept all connection requests from relevant profiles. Do not accept spam or irrelevant connections — your feed quality matters.</p>
+
+  <hr class="rule">
+  <p class="h2">Personal Site — ahmadfarooq.vercel.app</p>
+  <div class="box gold"><div class="box-label">The job of your personal site</div><p>Someone who has found your LinkedIn, considered hiring you, and wants to know more about you as a person — not just as a service provider. This site answers: who is Ahmad Farooq beyond SIGNL? What does he believe? How does he think? Why should I trust this person with my LinkedIn presence?</p></div>
+
+  <div class="site-plan">
+    <div class="site-plan-head"><span class="site-plan-name">Ahmad Farooq — Personal Site</span><span class="site-plan-url">ahmadfarooq.vercel.app</span></div>
+    <div class="site-plan-body">
+      <div class="h3">Section 1 — Identity (not a service pitch)</div>
+      <p class="p"><strong>Heading:</strong> "Ahmad Farooq" — no tagline, just your name as the headline. <br><strong>Intro (2–3 sentences):</strong> "I'm a LinkedIn growth strategist based in Lahore, Pakistan. I build content and positioning systems that help SaaS and agency founders generate inbound leads — without the posting treadmill. I'm 20 years old and I run SIGNL." <br>Do not lead with services. Lead with identity. The services come later.</p>
+
+      <div class="h3">Section 2 — What I believe (your point of view)</div>
+      <p class="p"><strong>Heading:</strong> "How I think about LinkedIn" <br>3–4 short contrarian beliefs that define your philosophy. Examples: "Followers are vanity. Pipeline is the metric." / "Posting every day is for people with nothing to lose. Founders need a system, not a habit." / "Your About section is a CV. That's why you get no leads." / "One great case study, told well, beats a hundred mediocre testimonials." This section is your intellectual fingerprint. It should make your ICP say "yes, exactly."</p>
+
+      <div class="h3">Section 3 — The Work (case study)</div>
+      <p class="p"><strong>Heading:</strong> "What I've done" <br>Nick's case study told as a story — the full version from Section 5b. Photo if available. Link to his profile. 200–300 words. This is your proof section. Keep it to what's verifiable.</p>
+
+      <div class="h3">Section 4 — Where I'm building (optional but powerful)</div>
+      <p class="p"><strong>Heading:</strong> "What I'm building right now" <br>A short paragraph about SIGNL, written as a live update. "Started on March 10, 2026 — the day I was laid off. One case study. Building from $36. Document the whole thing publicly." This section humanises you. Founders who built something from nothing will recognise themselves in it. It also signals you are someone who executes, not just plans.</p>
+
+      <div class="h3">Section 5 — Connect</div>
+      <p class="p"><strong>Heading:</strong> "Let's talk" <br>Two links: LinkedIn profile, and "Book a Signal Audit →" (Calendly). No contact form. No email address listed publicly. LinkedIn DM is the preferred channel — it keeps the conversation in context.</p>
+
+      <div class="h3">Visual direction — distinct from SIGNL site</div>
+      <p class="p">Same colour palette (navy, blue, mist) but warmer personality. Where the SIGNL site is direct and commercial, the personal site is editorial — more like a personal essay than a sales page. Use more white space. Larger type. Less structure, more voice. The feeling should be: "This person thinks clearly and writes well." Because you do.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+  <div class="box dark"><div class="box-label">The linking logic between all three surfaces</div><p>LinkedIn profile → links to SIGNL site (for the audit CTA) and personal site (for due diligence). SIGNL site → links to Calendly and back to LinkedIn. Personal site → links to LinkedIn and Calendly. Every surface points to the next step. No dead ends. Every visitor has a path forward regardless of where they land first.</p></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>SIGNL.</strong></p>
+  <p>Ahmad Farooq · Lahore, Pakistan · Day 1: March 10, 2026</p>
+  <p style="margin-top:1rem;font-size:.75rem">"The plan is not the problem. The execution starts today."</p>
+  <p style="margin-top:2rem;font-size:.72rem">Built for Vercel deployment · Single HTML file · No dependencies</p>
+</footer>
+
+<script>
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement,b=document.body;
+  const st=h.scrollTop||b.scrollTop;
+  const sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  document.getElementById('progress-bar').style.width=(st/sh*100)+'%';
+});
+
+// Reveal on scroll
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Active nav
+const sections=['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10'];
+const links=document.querySelectorAll('.nav-right a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&window.scrollY>=el.offsetTop-80)cur=id;
+  });
+  links.forEach(l=>{
+    const href=l.getAttribute('href').replace('#','');
+    l.classList.toggle('active',href===cur);
+  });
+},{passive:true});
+</script>
+</body>
+</html>
